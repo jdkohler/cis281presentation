@@ -325,6 +325,12 @@
 					<div id="chart_div"></div>
 				</section>
 			</section>
+			<section>
+				<section>
+					<h2>Cost vs Revenue</h2>
+					<div id="columnchart_values"></div>
+				</section>
+			</section>
 
 
 			</div>
@@ -349,7 +355,7 @@
 			});
 
 			google.charts.load('current', {
-				'packages': ['gantt']
+				'packages': ['gantt', 'bar']
 			});
 			google.charts.setOnLoadCallback(drawChart);
 
@@ -388,6 +394,27 @@
 				var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
 
 				chart.draw(data, options);
+
+				var priceData = new google.visualization.arrayToDataTable([
+					['Price','Phantom Software', 'Potential Revenue', {role: 'annotation' } ],
+					['Year 1', 8000, 20800],
+					['Year 2', 0, 20800],
+					['Year 3', 0, 20800],
+					['Year 4', 0, 20800],
+					['Year 5', 0, 20800],
+				]);
+
+				var priceOptions = {
+					width: 900,
+					height: 450,
+					legend: { position: 'right' },
+					bar: { groupWidth: '75%' },
+					isStacked: 'percent',
+				};
+
+				var priceChart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"))
+
+				priceChart.draw(priceData, priceOptions);
 			}
 		</script>
 	</body>
