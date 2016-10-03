@@ -328,7 +328,7 @@
 			<section>
 				<section>
 					<h2>Cost vs Revenue</h2>
-					<div id="columnchart_values"></div>
+					<div id="priceChart_div"></div>
 				</section>
 			</section>
 
@@ -355,15 +355,16 @@
 			});
 
 			google.charts.load('current', {
-				'packages': ['gantt', 'bar']
+				'packages': ['gantt', 'bar', 'corechart']
 			});
-			google.charts.setOnLoadCallback(drawChart);
+			google.charts.setOnLoadCallback(drawGanttChart);
+			google.charts.setOnLoadCallback(drawPriceChart);
 
 			function daysToMilliseconds(days) {
 				return days * 24 * 60 * 60 * 1000;
 			}
 
-			function drawChart() {
+			function drawGanttChart() {
 
 				var data = new google.visualization.DataTable();
 				data.addColumn('string', 'Task ID');
@@ -394,28 +395,36 @@
 				var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
 
 				chart.draw(data, options);
+			}
+		function drawPriceChart(){
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Year');
+				data.addColumn('number', 'Cost');
+				data.addColumn('number', 'Potential Revenue');
 
-				var priceData = new google.visualization.arrayToDataTable([
-					['Price','Phantom Software', 'Potential Revenue', {role: 'annotation' } ],
-					['Year 1', 8000, 20800],
-					['Year 2', 0, 20800],
-					['Year 3', 0, 20800],
-					['Year 4', 0, 20800],
-					['Year 5', 0, 20800],
+				data.addRows([
+					["2016", { v: 8000, f: '$8,000.00' }, { v: 20800, f: '$20,800.00' }],
+					["2017", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
+					["2018", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
+					["2019", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
+					["2020", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
 				]);
 
-				var priceOptions = {
-					width: 900,
-					height: 450,
-					legend: { position: 'right' },
-					bar: { groupWidth: '75%' },
-					isStacked: 'percent',
-				};
+				var options = {
+					title: 'Cost vs Potential Revenue',
+					hAxis: {
+					title: 'Year',
+					},
+					vAxis: {
+					title: 'Dollars',
+					format: '$###,###.##'
+					},
+					legend: {position: 'top'}
+				}
 
-				var priceChart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"))
-
-				priceChart.draw(priceData, priceOptions);
-			}
+				var chart = new google.visualization.ColumnChart(document.getElementById('priceChart_div'));
+      			chart.draw(data, options);
+		}
 		</script>
 	</body>
 </html>
