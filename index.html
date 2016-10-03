@@ -327,6 +327,24 @@
 			</section>
 			<section>
 				<section>
+					<h2>Development Costs</h2>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Potential Revenue Opportunities</h2>
+					<ul>
+						<li>Basketball Games</li>
+						<li>Football Games</li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				<section>
 					<h2>Cost vs Revenue</h2>
 					<div id="priceChart_div"></div>
 				</section>
@@ -399,26 +417,26 @@
 			function drawPriceChart(){
 				var data = new google.visualization.DataTable();
 				data.addColumn('string', 'Year');
-				data.addColumn('number', 'Cost');
-				data.addColumn('number', 'Potential Revenue');
+				data.addColumn('number', 'Phantom');
+				data.addColumn('number', 'Spreadfast');
 
 				data.addRows([
-					["2016", { v: 8000, f: '$8,613.00' }, { v: 14400, f: '$14,400.00' }],
-					["2017", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
-					["2018", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
-					["2019", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
-					["2020", { v: 0, f: '$0.00' }, { v: 20800, f: '$20,800.00' }],
+					["2016", { v: 8000, f: '$8,613.00' }, { v: 7000, f: '$7,000' }],
+					["2017", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
+					["2018", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
+					["2019", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
+					["2020", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
 				]);
 
 				var options = {
-					title: 'Cost vs Potential Revenue',
+					title: 'Phantom vs Spreadfast cost per year',
 					hAxis: {
-					title: 'Year',
-					},
+						title: 'Year',
+						},
 					vAxis: {
-					title: 'Dollars',
-					format: '$###,###.##'
-					},
+						title: 'Dollars',
+						format: '$###,###.##'
+						},
 					legend: {position: 'top'}
 				}
 
