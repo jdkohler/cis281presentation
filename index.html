@@ -368,6 +368,10 @@
 					<h2>Potential Revenue</h2>
 					<div id="revenue_div"></div>
 				</section>
+				<section>
+					<h2>Costs Breakdown</h2>
+					<div id="costs_div"></div>
+				</section>
 			</section>
 			<section>
 				<section>
@@ -442,6 +446,7 @@
 			google.charts.setOnLoadCallback(drawGanttChart);
 			google.charts.setOnLoadCallback(drawPriceChart);
 			google.charts.setOnLoadCallback(drawRevenue);
+			google.charts.setOnLoadCallback(drawCosts);
 
 			function daysToMilliseconds(days) {
 				return days * 24 * 60 * 60 * 1000;
@@ -519,7 +524,7 @@
 				data.addRows([
 					['Basketball', 4, 18, { v: 14400, f: '$ 14,000' }],
 					['Football', 4, 8, { v: 6400, f: '$ 6,400' }],
-					['Yearly Revenue', , , { v: 20800, f: '$ 20,800' }]
+					['Yearly', , , { v: 20800, f: '$ 20,800' }]
 				]);
 
 				var options = {
@@ -527,6 +532,52 @@
 				}
 
 				var table = new google.visualization.Table(document.getElementById('revenue_div'));
+      			table.draw(data, options);
+			}
+
+			function drawRevenue(){
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Benefits');
+				data.addColumn('number', 'Display per game');
+				data.addColumn('number', 'Games per Season');
+				data.addColumn('number', 'Revenue');
+
+				data.addRows([
+					['Basketball', 4, 18, { v: 14400, f: '$ 14,000' }],
+					['Football', 4, 8, { v: 6400, f: '$ 6,400' }],
+					['Yearly', , , { v: 20800, f: '$ 20,800' }]
+				]);
+
+				var options = {
+					showRowNumber: false
+				}
+
+				var table = new google.visualization.Table(document.getElementById('revenue_div'));
+      			table.draw(data, options);
+			}
+
+			function drawCosts(){
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Type');
+				data.addColumn('number', 'Hours');
+				data.addColumn('number', 'Rate');
+				data.addColumn('number', 'Cost');
+
+				data.addRows([
+					['Development', 90, 60, { v: 5400, f: '$ 5,400' }],
+					['Training', 8, 45, { v: 360, f: '$ 360' }],
+					['Documentation', 40, 45, { v: 1800, f: '$ 1,800' }],
+					['Consulting', 6, 45, { v: 270, f: '$ 270' }],
+					['Subtotal', , , { v: 7830, f: '$ 7,830' }],
+					['Contingency', { v: 10, f: '10%' }, , { v: 783, f: '$ 783' }],
+					['Total', , , { v: 8613, f: '$ 8,613' }]
+				]);
+
+				var options = {
+					showRowNumber: false
+				}
+
+				var table = new google.visualization.Table(document.getElementById('costs_div'));
       			table.draw(data, options);
 			}
 		</script>
