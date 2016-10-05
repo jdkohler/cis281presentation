@@ -441,7 +441,7 @@
 			});
 			google.charts.setOnLoadCallback(drawGanttChart);
 			google.charts.setOnLoadCallback(drawPriceChart);
-			google.charts.setOnLoadCallback(drawRevenueChart);
+			google.charts.setOnLoadCallback(drawRevenue);
 
 			function daysToMilliseconds(days) {
 				return days * 24 * 60 * 60 * 1000;
@@ -509,9 +509,9 @@
       			chart.draw(data, options);
 			}
 
-			function drawRevenueChart(){
+			function drawRevenue(){
 				var data = new google.visualization.DataTable();
-				data.addColumn('number', 'Benefits');
+				data.addColumn('string', 'Benefits');
 				data.addColumn('number', 'Display per game');
 				data.addColumn('number', 'Games per Season');
 				data.addColumn('number', 'Revenue');
@@ -523,7 +523,9 @@
 				]);
 
 				var options = {
-					title: 'Potential Revenue @ $200 a display',
+					showRowNumber: false,
+					width: '75%',
+					height: '50%'
 				}
 
 				var table = new google.visualization.Table(document.getElementById('revenue_div'));
