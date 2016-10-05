@@ -363,6 +363,8 @@
 				<section>
 					<h2>Return on Investment (ROI)</h2>
 					<p>Utilizing Phantom software's solution would have a positive net effect for the University of Arizona after 1 year of use, in software expenses alone, as well as reduced labor costs to operate during live events</p>
+				</section>
+				<section>
 					<div id="revenue_div"></div>
 				</section>
 			</section>
@@ -487,7 +489,7 @@
 					["2017", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
 					["2018", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
 					["2019", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
-					["2020", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }],
+					["2020", { v: 0, f: '$0.00' }, { v: 7000, f: '$7,000' }]
 				]);
 
 				var options = {
@@ -516,15 +518,15 @@
 				data.addRows([
 					['Basketball', 4, 18, { v: 14400, f: '$ 14,000' }],
 					['Football', 4, 8, { v: 6400, f: '$ 6,400' }],
-					['Yearly Revenue', , , { v: 20800, f: '$ 20,800' }],
+					['Yearly Revenue', , , { v: 20800, f: '$ 20,800' }]
 				]);
 
 				var options = {
 					title: 'Potential Revenue @ $200 a display',
 				}
 
-				var chart = new google.visualization.Table(document.getElementById('revenue_div'));
-      			chart.draw(data, options);
+				var table = new google.visualization.Table(document.getElementById('revenue_div'));
+      			table.draw(data, options);
 			}
 		</script>
 	</body>
