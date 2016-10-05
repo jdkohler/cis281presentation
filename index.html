@@ -363,6 +363,7 @@
 				<section>
 					<h2>Return on Investment (ROI)</h2>
 					<p>Utilizing Phantom software's solution would have a positive net effect for the University of Arizona after 1 year of use, in software expenses alone, as well as reduced labor costs to operate during live events</p>
+					<div id="revenue_div"></div>
 				</section>
 			</section>
 			<section>
@@ -437,6 +438,7 @@
 			});
 			google.charts.setOnLoadCallback(drawGanttChart);
 			google.charts.setOnLoadCallback(drawPriceChart);
+			google.charts.setOnLoadCallback(drawRevenueChart);
 
 			function daysToMilliseconds(days) {
 				return days * 24 * 60 * 60 * 1000;
@@ -502,7 +504,28 @@
 
 				var chart = new google.visualization.ColumnChart(document.getElementById('priceChart_div'));
       			chart.draw(data, options);
-		}
+			}
+
+			function drawRevenueChart(){
+				var data = new google.visualization.DataTable();
+				data.addColumn('number', 'Benefits');
+				data.addColumn('number', 'Display per game');
+				data.addColumn('number', 'Games per Season');
+				data.addColumn('number', 'Revenue');
+
+				data.addRows([
+					['Basketball', 4, 18, { v: 14400, f: '$ 14,000' }],
+					['Football', 4, 8, { v: 6400, f: '$ 6,400' }],
+					['Yearly Revenue', , , { v: 20800, f: '$ 20,800' }],
+				]);
+
+				var options = {
+					title: 'Potential Revenue @ $200 a display',
+				}
+
+				var chart = new google.visualization.Table(document.getElementById('revenue_div'));
+      			chart.draw(data, options);
+			}
 		</script>
 	</body>
 </html>
