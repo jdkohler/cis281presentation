@@ -595,13 +595,13 @@
 				data.addColumn('string', 'Destination');
 
 				data.addRows([
-					['Event Table ', 'moderator/user', 'System will try to match user name and combination to authorize it. ', 'Moderation componet loading, and moderator table in database.', 'If authorized system will load it it does not mach system will return to log in screen.'],
-					['Event', 'moderator', 'System will request a feed from tweeter ', 'A temporary feed recording, Tweeter(external) ', 'The feed will be stored in a temporary record'],
-					['Log in entry', 'moderator', 'System will start checking for tweets qualified as auto-approved, or needing moderator approval.', 'Approved tweet list, Temp Feed Record, PreApproved list and Moderator Approval queue', 'If tweet comes from preapproved user  it will be recorded in the Approved Tweet list, if not it will be added to a queue for Moderator to physically approve it'],
-					['Feed request', 'moderator', 'moderator checks on decline tweet', 'Moderator Approval queue', 'tweet is discarded'],
-					['Activate moderation', 'moderator', 'moderator checks on approve tweet', 'Approved tweet list, Moderator Approval queue', 'The tweet will be sent to the Approved Tweet list and open a prompt to add Tweeter account to preapproved users.'],
-					['Moderator declines tweet', 'moderator', 'Prompt to add Tweeter account to preapproved users.', 'Preapproved user', 'If moderator clicks yes tweeter username will be added to the Preapproved user list and then prompt will close, if moderator clicks no prompt will only close.'],
-					['Moderator approves tweet 1', 'moderator', 'Moderator clicks on refresh feed on main screen.', 'Temporary feed record', 'Temporary feed record will be refreshed.']
+					['Log in entry', 'moderator/user', 'System will try to match user name and combination to authorize it. ', 'Moderation componet loading, and moderator table in database.', 'If authorized system will load it it does not mach system will return to log in screen.'],
+					[],
+					[],
+					[],
+					[],
+					[],
+					[]
 				]);
 
 				var options = {
