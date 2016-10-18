@@ -419,6 +419,56 @@
 						</ul>
 				</section>
 			</section>
+			<section>
+				<section>
+					<h2>Data Collection Methods</h2>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Requirements</h2>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Build vs. Buy</h2>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Event Table</h2>
+					<div id="costs_div"></div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>ER Diagram</h2>
+					<img src="/images/ER_Diagram.png" />
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>DFDs</h2>
+				</section>
+				<section>
+					<h2>DFD 0</h2>
+					<img src="/images/DFDs/DFD_0.png" />
+				</section>
+				<section>
+					<h2>DFD 1</h2>
+					<img src="/images/DFDs/DFD_1.png" />
+				</section>
+				<section>
+					<h2>DFD 1A</h2>
+					<img src="/images/DFDs/DFD_1A.png" />
+				</section>
+				<section>
+					<h2>DFD 1B</h2>
+					<img src="/images/DFDs/DFD_1B.png" />
+				</section>
+				
+			</section>
+
 			</div>
 		</div>
 
@@ -446,6 +496,7 @@
 			google.charts.setOnLoadCallback(drawGanttChart);
 			google.charts.setOnLoadCallback(drawPriceChart);
 			google.charts.setOnLoadCallback(drawRevenue);
+			google.charts.setOnLoadCallback(drawEventTable);
 			google.charts.setOnLoadCallback(drawCosts);
 
 			function daysToMilliseconds(days) {
@@ -535,25 +586,30 @@
       			table.draw(data, options);
 			}
 
-			function drawRevenue(){
+			function drawEventTable(){
 				var data = new google.visualization.DataTable();
-				data.addColumn('string', 'Benefits');
-				data.addColumn('number', 'Display per game');
-				data.addColumn('number', 'Games per Season');
-				data.addColumn('number', 'Revenue');
+				data.addColumn('string', 'Event');
+				data.addColumn('string', 'Source');
+				data.addColumn('string', 'Action');
+				data.addColumn('string', 'Object');
+				data.addColumn('string', 'Destination');
 
 				data.addRows([
-					['Basketball', 4, 18, { v: 14400, f: '$ 14,000' }],
-					['Football', 4, 8, { v: 6400, f: '$ 6,400' }],
-					['Yearly', , , { v: 20800, f: '$ 20,800' }]
+					['Event Table ', 'moderator/user', 'System will try to match user name and combination to authorize it. ', 'Moderation componet loading, and moderator table in database.', 'If authorized system will load it it does not mach system will return to log in screen.'],
+					['Event', 'moderator', 'System will request a feed from tweeter ', 'A temporary feed recording, Tweeter(external) ', 'The feed will be stored in a temporary record'],
+					['Log in entry', 'moderator', 'System will start checking for tweets qualified as auto-approved, or needing moderator approval.', 'Approved tweet list, Temp Feed Record, PreApproved list and Moderator Approval queue', 'If tweet comes from preapproved user  it will be recorded in the Approved Tweet list, if not it will be added to a queue for Moderator to physically approve it'],
+					['Feed request', 'moderator', 'moderator checks on decline tweet', 'Moderator Approval queue', 'tweet is discarded'],
+					['Activate moderation', 'moderator', 'moderator checks on approve tweet', 'Approved tweet list, Moderator Approval queue', 'The tweet will be sent to the Approved Tweet list and open a prompt to add Tweeter account to preapproved users.'],
+					['Moderator declines tweet', 'moderator', 'Prompt to add Tweeter account to preapproved users.', 'Preapproved user', 'If moderator clicks yes tweeter username will be added to the Preapproved user list and then prompt will close, if moderator clicks no prompt will only close.'],
+					['Moderator approves tweet 1', 'moderator', 'Moderator clicks on refresh feed on main screen.', 'Temporary feed record', 'Temporary feed record will be refreshed.']
 				]);
 
 				var options = {
 					showRowNumber: false
 				}
-
-				var table = new google.visualization.Table(document.getElementById('revenue_div'));
-      			table.draw(data, options);
+				
+				var table = new google.visualization.Table(document.getElementById('event_div'));
+				table.draw(data, options);
 			}
 
 			function drawCosts(){
