@@ -496,7 +496,6 @@
 			google.charts.setOnLoadCallback(drawGanttChart);
 			google.charts.setOnLoadCallback(drawPriceChart);
 			google.charts.setOnLoadCallback(drawRevenue);
-			<!--google.charts.setOnLoadCallback(drawEventTable);-->
 			google.charts.setOnLoadCallback(drawCosts);
 
 			function daysToMilliseconds(days) {
@@ -585,29 +584,6 @@
 				var table = new google.visualization.Table(document.getElementById('revenue_div'));
       			table.draw(data, options);
 			}
-
-			<!--function drawEventTable(){
-				var data = new google.visualization.DataTable();
-				data.addColumn('string', 'Event');
-				data.addColumn('string', 'Source');
-				data.addColumn('string', 'Action');
-				data.addColumn('string', 'Object');
-				data.addColumn('string', 'Destination');
-
-				data.addRows([
-					['Log in entry', 'moderator/user', 'System will try to match user name and combination to authorize it. ', 'Moderation componet loading, and moderator table in database.', 'If authorized system will load it it does not mach system will return to log in screen.'],
-					['Feed request', 'moderator', 'System will request a feed from tweeter ', 'A temporary feed recording, Tweeter(external) ', 'The feed will be stored in a temporary record'],
-					['Activate moderation', 'moderator', 'System will start checking for tweets qualified as auto-approved, or needing moderator approval.', 'Approved tweet list, Temp Feed Record, PreApproved list and Moderator Approval queue', 'If tweet comes from preapproved user  it will be recorded in the Approved Tweet list, if not it will be added to a queue for Moderator to physically approve it']
-				]);
-
-				var options = {
-					showRowNumber: false,
-					width: '100%'
-				}
-				
-				var table = new google.visualization.Table(document.getElementById('event_div'));
-				table.draw(data, options);
-			}-->
 
 			function drawCosts(){
 				var data = new google.visualization.DataTable();
