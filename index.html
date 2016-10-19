@@ -444,13 +444,14 @@
 					<h2>Build vs. Buy</h2>
 
 					<table border="1">
-						<th>
-							<td align="center">Custom</td>
-							<td align="center">ROI</td>
-							<td align="center">Support</td>
-							<td align="center">Training</td>
-							<td align="center">Cost</td>
-						</th>
+						<tr>
+							<th>Developer</th>
+							<th align="center">Custom</th>
+							<th align="center">ROI</th>
+							<th align="center">Support</th>
+							<th align="center">Training</th>
+							<th align="center">Cost</th>
+						</tr>
 						<tr>
 							<td>Phantom<br />Software</td>
 							<td align="center">Yes</td>
@@ -497,7 +498,64 @@
 			<section>
 				<section>
 					<h2>Event Table</h2>
-					<img src="/cis281presentation/images/Event_Table.png" height="550em" />
+					<table>
+						<tr>
+							<th>Event</th>
+							<th>Source</th>
+							<th>Action</th>
+							<th>Object</th>
+							<th>Destination</th>
+						</tr>
+						<tr>
+							<td>Log in entry</td>
+							<td>Moderator/User</td>
+							<td>System will try to match user and authorize</td>
+							<td>Moderation component loading and moderator table in database</td>
+							<td>If authorized will load, otherwise return to login screen</td>
+						</tr>
+						<tr>
+							<td>Feed request</td>
+							<td>Moderator</td>
+							<td>System will request a feed from Twitter</td>
+							<td>A temporary feed recording, Twitter (external)</td>
+							<td>The feed will be stored in a temporary record</td>
+						</tr>
+						<tr>
+							<td>Activate moderation</td>
+							<td>Moderator</td>
+							<td>System will start checking Tweets</td>
+							<td>Approved Tweets, temp feed, pre-approved list and moderation queue</td>
+							<td>If pre-approved added to approved, otherwise added to moderation queue</td>
+						</tr>
+						<tr>
+							<td>Moderator declines Tweet</td>
+							<td>Moderator</td>
+							<td>Moderator checks decline on Tweet</td>
+							<td>Moderator approval queue</td>
+							<td>Tweet is discared</td>
+						</tr>
+						<tr>
+							<td>Moderator approves Tweet 1</td>
+							<td>Moderator</td>
+							<td>Moderator checks approve on Tweet</td>
+							<td>Approved Tweet list, moderator approval queue</td>
+							<td>Tweet sent to approved Tweet list and open prompt to pre-approve user</td>
+						</tr>
+						<tr>
+							<td>Moderator approves Tweet 2</td>
+							<td>Moderator</td>
+							<td>Prompt to add Twitter account to pre-approved users</td>
+							<td>Pre-approved user</td>
+							<td>If moderator approves user added to pre-approved, otherwise close</td>
+						</tr>
+						<tr>
+							<td>Refresh feed</td>
+							<td>Moderator</td>
+							<td>Moderator click refresh on main screen</td>
+							<td>Temporary feed record</td>
+							<td>Temporary feed record refreshed</td>
+						</tr>
+					</table>
 				</section>
 			</section>
 			<section>
